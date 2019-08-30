@@ -17,7 +17,7 @@ public class WindowBack extends Window implements IBackButton {
 		btnNewButton.setSelectedIcon(new ImageIcon(WindowBack.class.getResource("/Ejercicio2/App/Assets/home.png")));
 		btnNewButton.setIcon(new ImageIcon(WindowBack.class.getResource("/Ejercicio2/App/Assets/home.png")));
 		btnNewButton.addActionListener(this.goBack());
-		btnNewButton.setBounds(639, 565, 50, 50);
+		btnNewButton.setBounds(371, 637, 50, 50);
 		getContentPane().add(btnNewButton);
 	}
 	

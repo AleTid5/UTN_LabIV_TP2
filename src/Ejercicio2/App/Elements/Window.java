@@ -3,6 +3,8 @@ package Ejercicio2.App.Elements;
 import javax.swing.JFrame;
 
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -14,17 +16,23 @@ import Ejercicio2.App.Views.StudentAverage;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.GridLayout;
+import java.awt.Toolkit;
+import java.awt.SystemColor;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class Window extends JFrame implements INavBar {	
 	public Window() {
+		getContentPane().setFont(new Font("Khmer OS System", Font.PLAIN, 11));
+		getContentPane().setBackground(SystemColor.controlShadow);
 		setTitle("TP2");
 		setBackground(Color.DARK_GRAY);
-		setSize(1366, 700);
-		setLocation(0, 0);
+		setSize(750, 750);
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		
 		JMenuBar menuBar = new JMenuBar();
+		menuBar.setFont(new Font("Khmer OS", Font.BOLD, 11));
 		setJMenuBar(menuBar);
 		
 		JMenu mnNewMenu = new JMenu("Menú principal");
