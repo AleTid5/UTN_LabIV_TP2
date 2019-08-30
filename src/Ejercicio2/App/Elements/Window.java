@@ -21,8 +21,8 @@ public class Window extends JFrame implements INavBar {
 	public Window() {
 		setTitle("TP2");
 		setBackground(Color.DARK_GRAY);
-		setSize(500, 500);
-		setLocation(350, 350);
+		setSize(1366, 700);
+		setLocation(0, 0);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
