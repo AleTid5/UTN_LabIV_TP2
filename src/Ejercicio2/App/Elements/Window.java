@@ -19,6 +19,9 @@ import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import java.awt.SystemColor;
 import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class Window extends JFrame implements INavBar {	
@@ -51,6 +54,11 @@ public class Window extends JFrame implements INavBar {
 		mnNewMenu.add(mntmEjercicio_2);
 
 		getContentPane().setLayout(null);
+		
+		JLabel label = new JLabel(new ImageIcon(Window.class.getResource("/Ejercicio2/App/Assets/utn.png")));
+		label.setBackground(SystemColor.controlShadow);
+		label.setBounds(525, 12, 201, 78);
+		getContentPane().add(label);
 	}
 
 	@Override

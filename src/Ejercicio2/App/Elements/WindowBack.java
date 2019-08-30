@@ -7,12 +7,13 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.awt.SystemColor;
 
 @SuppressWarnings("serial")
 public class WindowBack extends Window implements IBackButton {
 	public WindowBack() {		
 		JButton btnNewButton = new JButton("");
-		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setBackground(SystemColor.controlShadow);
 		btnNewButton.setToolTipText("Volver a la pantalla principal");
 		btnNewButton.setSelectedIcon(new ImageIcon(WindowBack.class.getResource("/Ejercicio2/App/Assets/home.png")));
 		btnNewButton.setIcon(new ImageIcon(WindowBack.class.getResource("/Ejercicio2/App/Assets/home.png")));
