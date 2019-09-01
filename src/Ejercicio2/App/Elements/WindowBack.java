@@ -1,25 +1,39 @@
 package Ejercicio2.App.Elements;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JSeparator;
+
 import Ejercicio2.App.Interfaces.IBackButton;
 import Ejercicio2.App.Views.Home;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
-import java.awt.Color;
-import java.awt.SystemColor;
 
 @SuppressWarnings("serial")
 public class WindowBack extends Window implements IBackButton {
 	public WindowBack() {		
 		JButton btnNewButton = new JButton("");
-		btnNewButton.setBackground(SystemColor.controlShadow);
+		Image imageHome = new Image("home.png", 310, 537, 50, 50);
+		btnNewButton.setBackground(imageHome.getBackground());
 		btnNewButton.setToolTipText("Volver a la pantalla principal");
-		btnNewButton.setSelectedIcon(new ImageIcon(WindowBack.class.getResource("/Ejercicio2/App/Assets/home.png")));
-		btnNewButton.setIcon(new ImageIcon(WindowBack.class.getResource("/Ejercicio2/App/Assets/home.png")));
+		btnNewButton.setIcon(imageHome.getIcon());
 		btnNewButton.addActionListener(this.goBack());
-		btnNewButton.setBounds(371, 637, 50, 50);
+		btnNewButton.setBounds(imageHome.getBounds());
+		btnNewButton.setBorder(null);
 		getContentPane().add(btnNewButton);
+		
+		JSeparator separator = new JSeparator();
+		separator.setForeground(Color.LIGHT_GRAY);
+		separator.setBackground(Color.LIGHT_GRAY);
+		separator.setBounds(47, 131, 548, 13);
+		getContentPane().add(separator);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setForeground(Color.LIGHT_GRAY);
+		separator_1.setBackground(Color.LIGHT_GRAY);
+		separator_1.setBounds(47, 512, 548, 13);
+		getContentPane().add(separator_1);
 	}
 	
 	@Override

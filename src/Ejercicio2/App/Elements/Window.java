@@ -1,12 +1,17 @@
 package Ejercicio2.App.Elements;
 
-import javax.swing.JFrame;
-
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JMenuBar;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import Ejercicio2.App.Interfaces.INavBar;
@@ -14,23 +19,14 @@ import Ejercicio2.App.Views.Contacts;
 import Ejercicio2.App.Views.MultipleSelection;
 import Ejercicio2.App.Views.StudentAverage;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Toolkit;
-import java.awt.SystemColor;
-import java.awt.Font;
-import javax.swing.JLabel;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-
 @SuppressWarnings("serial")
 public class Window extends JFrame implements INavBar {	
 	public Window() {
 		getContentPane().setFont(new Font("Khmer OS System", Font.PLAIN, 11));
 		getContentPane().setBackground(SystemColor.controlShadow);
-		setTitle("TP2");
+		setTitle("TP2 | ");
 		setBackground(Color.DARK_GRAY);
-		setSize(750, 750);
+		setSize(650, 650);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		
@@ -55,10 +51,8 @@ public class Window extends JFrame implements INavBar {
 
 		getContentPane().setLayout(null);
 		
-		JLabel label = new JLabel(new ImageIcon(Window.class.getResource("/Ejercicio2/App/Assets/utn.png")));
-		label.setBackground(SystemColor.controlShadow);
-		label.setBounds(525, 12, 201, 78);
-		getContentPane().add(label);
+		JLabel image = new Image("utn.png", 478, 12, 160, 50);
+		getContentPane().add(image);
 	}
 
 	@Override
@@ -89,6 +83,15 @@ public class Window extends JFrame implements INavBar {
 				new StudentAverage();
 			}
 		};	
-	}	
+	}
+	
+	/**
+	 * Establece el titulo en cada pantalla.
+	 * Es protected para que cada clase derivada la vea como private.
+	 * @param title
+	 */
+	protected void setHeader(String title) {
+		this.setTitle(this.getTitle() + title);
+	}
 	
 }
