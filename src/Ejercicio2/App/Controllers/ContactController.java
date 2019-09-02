@@ -5,7 +5,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class ContactController extends Controller {
+public class ContactController extends Controller {	
 	private static Boolean error = false;
 	
 	public static void validate(JTextField value, String regex) {
@@ -18,7 +18,7 @@ public class ContactController extends Controller {
 		}
 	}
 	
-	public static void cleanForm(JTextField name, JTextField lastname, JTextField phone, JTextField bornDate,
+	public static void clean(JTextField name, JTextField lastname, JTextField phone, JTextField bornDate,
 			JLabel sTitle, JLabel sName, JLabel sLastname, JLabel sPhone, JLabel sBD, JLabel oName,
 			JLabel oLastname, JLabel oPhone, JLabel oBD) {
 		name.setText("");

@@ -11,9 +11,10 @@ import javax.swing.JTextField;
 import Ejercicio2.App.Controllers.ContactController;
 import Ejercicio2.App.Elements.Image;
 import Ejercicio2.App.Elements.WindowBack;
+import Ejercicio2.App.Interfaces.IForm;
 
 @SuppressWarnings("serial")
-public class Contacts extends WindowBack {
+public class Contacts extends WindowBack implements IForm {
 	private JTextField txtName;
 	private JTextField txtLastName;
 	private JTextField txtPhone;
@@ -62,6 +63,7 @@ public class Contacts extends WindowBack {
 		getContentPane().add(lblFechaDeNacimiento);
 		
 		txtBornDate = new JTextField();
+		txtBornDate.setToolTipText("AAAA/MM/DD");
 		txtBornDate.setColumns(10);
 		txtBornDate.setBounds(413, 219, 181, 19);
 		getContentPane().add(txtBornDate);
@@ -71,8 +73,8 @@ public class Contacts extends WindowBack {
 		btnCheck.setBackground(imageCheck.getBackground());
 		btnCheck.setToolTipText("Validar Formulario");
 		btnCheck.setIcon(imageCheck.getIcon());
-		btnCheck.addActionListener(this.validateForm());
-		btnCheck.setBounds(new Rectangle(570, 261, 25, 25));
+		btnCheck.addActionListener(this.submit());
+		btnCheck.setBounds(new Rectangle(570, 261, 24, 24));
 		btnCheck.setBorder(null);
 		getContentPane().add(btnCheck);
 		setVisible(true);
@@ -82,8 +84,8 @@ public class Contacts extends WindowBack {
 		btnClean.setBackground(imageTrash.getBackground());
 		btnClean.setToolTipText("Limpiar Formulario");
 		btnClean.setIcon(imageTrash.getIcon());
-		btnClean.addActionListener(this.cleanForm());
-		btnClean.setBounds(new Rectangle(47, 261, 25, 25));
+		btnClean.addActionListener(this.clean());
+		btnClean.setBounds(new Rectangle(47, 261, 24, 24));
 		btnClean.setBorder(null);
 		getContentPane().add(btnClean);
 		
@@ -134,7 +136,7 @@ public class Contacts extends WindowBack {
 		setVisible(true);
 	}
 	
-	private ActionListener validateForm() {
+	public ActionListener submit() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ContactController.setError(false);
@@ -152,10 +154,10 @@ public class Contacts extends WindowBack {
 		};
 	}
 	
-	private ActionListener cleanForm() {
+	public ActionListener clean() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ContactController.cleanForm(
+				ContactController.clean(
 						txtName, txtLastName, txtPhone, txtBornDate, lblStaticTitle,
 						lblStaticName, lblStaticLastname, lblStaticPhone, lblStaticBornDate,
 						lblOutName, lblOutLastname, lblOutPhone, lblOutBornDate);
