@@ -27,7 +27,7 @@ public class StudentAverageController extends Controller {
 	}
 	
 	public static void calculateAverage(int a, int b, int c) {
-		average = (a + b + c) / 3;
+		average = Math.round(((double) (a + b + c) / 3) * 100.0) / 100.0;
 	}
 	
 	public static void calculateCondition(Object tpCondition) {

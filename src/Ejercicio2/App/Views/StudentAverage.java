@@ -74,7 +74,7 @@ public class StudentAverage extends WindowBack implements IForm {
 		getContentPane().add(lblSStudents);
 		
 		lblSAverage = new JLabel("Promedio");
-		lblSAverage.setBounds(349, 186, 66, 15);
+		lblSAverage.setBounds(349, 186, 73, 15);
 		lblSAverage.setVisible(false);
 		getContentPane().add(lblSAverage);
 		
@@ -84,11 +84,11 @@ public class StudentAverage extends WindowBack implements IForm {
 		getContentPane().add(lblSCondition);
 		
 		lblOAverage = new JLabel("");
-		lblOAverage.setBounds(517, 186, 66, 15);
+		lblOAverage.setBounds(452, 186, 131, 15);
 		getContentPane().add(lblOAverage);
 		
 		lblOCondition = new JLabel("");
-		lblOCondition.setBounds(517, 213, 66, 15);
+		lblOCondition.setBounds(452, 213, 131, 15);
 		getContentPane().add(lblOCondition);
 		
 		JButton btnCheck = new JButton("");
