@@ -1,15 +1,21 @@
 package Ejercicio2.App.Controllers;
 
 import java.awt.Color;
+import java.util.Arrays;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import Ejercicio2.App.Exceptions.PromotedStudent;
+import Ejercicio2.App.Exceptions.RegularStudent;
+import Ejercicio2.App.Models.Student;
 
 public class StudentAverageController extends Controller {
 	private static Boolean error = false;
 	private static double average = 0.00;
 	private static String condition = null;
 	
+	@SuppressWarnings("finally")
 	public static int getNote(JTextField value) {
 		int note = 0;
 		
@@ -21,25 +27,30 @@ public class StudentAverageController extends Controller {
 		} catch(Exception e) {
 			setError(true);
 			value.setBackground(Color.RED);
+		} finally {
+			return note;
 		}
-		
-		return note;
 	}
 	
-	public static void calculateAverage(int a, int b, int c) {
-		average = Math.round(((double) (a + b + c) / 3) * 100.0) / 100.0;
+	public static void setAverage(int a, int b, int c) {
+		Student.setNotes(Arrays.asList(a, b, c));
+		average = Student.getAverage();
 	}
 	
-	public static void calculateCondition(Object tpCondition) {
-		boolean isTPApproved = tpCondition == "Aprobado";
-		
-		if (isTPApproved && average >= 8) {
+	public static void setCondition(Object tpCondition) {		
+		try {
+			boolean isTPApproved = tpCondition == "Aprobado";
+			assertOrFail(! (isTPApproved && Student.canBePromoted()), new PromotedStudent()); // Se niega para que no continue y salga por el catch
+			assertOrFail(! (isTPApproved && Student.canBeRegularized()), new RegularStudent());
+			assertOrFail(false, new Exception());
+		} catch (PromotedStudent e) {
 			condition = "PROMOCIONADO";
-		} else if (isTPApproved && average >= 6) {
-			condition = "REGULAR";			
-		} else {
-			condition = "LIBRE";
+		} catch (RegularStudent e) {
+			condition = "REGULAR";
+		} catch (Exception e) {
+			condition = "LIBRE";			
 		}
+
 	}
 	
 	public static void fillOutput(JLabel tit, JLabel sAvg, JLabel sCon, JLabel oAvg, JLabel oCon) {

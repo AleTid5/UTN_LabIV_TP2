@@ -132,8 +132,8 @@ public class StudentAverage extends WindowBack implements IForm {
 				int n1 = StudentAverageController.getNote(txtNote1);
 				int n2 = StudentAverageController.getNote(txtNote2);
 				int n3 = StudentAverageController.getNote(txtNote3);				
-				StudentAverageController.calculateAverage(n1, n2, n3);
-				StudentAverageController.calculateCondition(comboBox.getSelectedItem());
+				StudentAverageController.setAverage(n1, n2, n3);
+				StudentAverageController.setCondition(comboBox.getSelectedItem());
 				
 				if (! StudentAverageController.hasError())
 					StudentAverageController.fillOutput(lblSStudents, lblSAverage, lblSCondition, lblOAverage, lblOCondition);
