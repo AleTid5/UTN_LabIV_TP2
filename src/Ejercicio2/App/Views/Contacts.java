@@ -1,138 +1,75 @@
 package Ejercicio2.App.Views;
 
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
 import Ejercicio2.App.Controllers.ContactController;
+import Ejercicio2.App.Elements.Button;
 import Ejercicio2.App.Elements.Image;
+import Ejercicio2.App.Elements.Label;
+import Ejercicio2.App.Elements.TextField;
 import Ejercicio2.App.Elements.WindowBack;
 import Ejercicio2.App.Interfaces.IForm;
 
 @SuppressWarnings("serial")
 public class Contacts extends WindowBack implements IForm {
-	private JTextField txtName;
-	private JTextField txtLastName;
-	private JTextField txtPhone;
-	private JTextField txtBornDate;
-	private JLabel lblStaticTitle;
-	private JLabel lblStaticName;
-	private JLabel lblStaticLastname;
-	private JLabel lblStaticPhone;
-	private JLabel lblStaticBornDate;
-	private JLabel lblOutName;
-	private JLabel lblOutLastname;
-	private JLabel lblOutPhone;
-	private JLabel lblOutBornDate;
+	private TextField txtName;
+	private TextField txtLastName;
+	private TextField txtPhone;
+	private TextField txtBornDate;
+	private Label lblStaticTitle;
+	private Label lblStaticName;
+	private Label lblStaticLastname;
+	private Label lblStaticPhone;
+	private Label lblStaticBornDate;
+	private Label lblOutName;
+	private Label lblOutLastname;
+	private Label lblOutPhone;
+	private Label lblOutBornDate;
 	public Contacts() {
 		this.setHeader("Contactos");
 		
-		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(47, 163, 66, 15);
+		Label lblNombre = new Label(47, 163, 66, 15, "Nombre");
+		txtName = new TextField(131, 161, 181, 19);
+		Label lblApellido = new Label(330, 163, 66, 15, "Apellido");
+		txtLastName = new TextField(414, 161, 181, 19);
+		Label lblTelfono = new Label(47, 223, 66, 15, "Teléfono");
+		txtPhone = new TextField(131, 221, 181, 19);
+		Label lblFechaDeNacimiento = new Label(330, 223, 88, 15, "Fec. Nac.");
+		txtBornDate = new TextField(413, 219, 181, 19, "AAAA/MM/DD");
+		Button btnCheck = new Button(570, 261, 24, 24, "Validar Formulario", new Image("check.png", 310, 537, 50, 50), this.submit());
+		Button btnClean = new Button(47, 261, 24, 24, "Limpiar Formulario", new Image("trash.png", 310, 537, 50, 50), this.clean());
+		lblStaticTitle = new Label(47, 316, 205, 15, "Los datos ingresados fueron:", false);
+		lblStaticName = new Label(47, 343, 205, 15, "Nombre: ", false);
+		lblStaticLastname = new Label(47, 370, 205, 15, "Apellido: ", false);
+		lblStaticPhone = new Label(47, 397, 205, 15, "Teléfono: ", false);
+		lblStaticBornDate = new Label(47, 424, 205, 15, "Fecha de nacimiento: ", false);
+		lblOutName = new Label(264, 343, 205, 15, "", false);
+		lblOutLastname = new Label(264, 370, 205, 15, "", false);
+		lblOutPhone = new Label(264, 397, 205, 15, "", false);
+		lblOutBornDate = new Label(264, 424, 205, 15, "", false);
+		
+
 		getContentPane().add(lblNombre);
-		
-		txtName = new JTextField();
-		txtName.setBounds(131, 161, 181, 19);
-		txtName.setColumns(10);
 		getContentPane().add(txtName);
-		
-		JLabel lblApellido = new JLabel("Apellido");
-		lblApellido.setBounds(330, 163, 66, 15);
 		getContentPane().add(lblApellido);
-		
-		txtLastName = new JTextField();
-		txtLastName.setColumns(10);
-		txtLastName.setBounds(414, 161, 181, 19);
 		getContentPane().add(txtLastName);
-		
-		JLabel lblTelfono = new JLabel("Teléfono");
-		lblTelfono.setBounds(47, 223, 66, 15);
 		getContentPane().add(lblTelfono);
-		
-		txtPhone = new JTextField();
-		txtPhone.setColumns(10);
-		txtPhone.setBounds(131, 221, 181, 19);
 		getContentPane().add(txtPhone);
-		
-		JLabel lblFechaDeNacimiento = new JLabel("Fec. Nac.");
-		lblFechaDeNacimiento.setBounds(330, 223, 88, 15);
 		getContentPane().add(lblFechaDeNacimiento);
-		
-		txtBornDate = new JTextField();
-		txtBornDate.setToolTipText("AAAA/MM/DD");
-		txtBornDate.setColumns(10);
-		txtBornDate.setBounds(413, 219, 181, 19);
 		getContentPane().add(txtBornDate);
-		
-		JButton btnCheck = new JButton("");
-		Image imageCheck = new Image("check.png", 310, 537, 50, 50);
-		btnCheck.setBackground(imageCheck.getBackground());
-		btnCheck.setToolTipText("Validar Formulario");
-		btnCheck.setIcon(imageCheck.getIcon());
-		btnCheck.addActionListener(this.submit());
-		btnCheck.setBounds(new Rectangle(570, 261, 24, 24));
-		btnCheck.setBorder(null);
 		getContentPane().add(btnCheck);
-		setVisible(true);
-		
-		JButton btnClean = new JButton("");
-		Image imageTrash = new Image("trash.png", 310, 537, 50, 50);
-		btnClean.setBackground(imageTrash.getBackground());
-		btnClean.setToolTipText("Limpiar Formulario");
-		btnClean.setIcon(imageTrash.getIcon());
-		btnClean.addActionListener(this.clean());
-		btnClean.setBounds(new Rectangle(47, 261, 24, 24));
-		btnClean.setBorder(null);
 		getContentPane().add(btnClean);
-		
-		lblStaticTitle = new JLabel("Los datos ingresados fueron:");
-		lblStaticTitle.setVisible(false);
-		lblStaticTitle.setBounds(47, 316, 205, 15);
 		getContentPane().add(lblStaticTitle);
-		
-		lblStaticName = new JLabel("Nombre: ");
-		lblStaticName.setVisible(false);
-		lblStaticName.setBounds(47, 343, 205, 15);
 		getContentPane().add(lblStaticName);
-		
-		lblStaticLastname = new JLabel("Apellido: ");
-		lblStaticLastname.setVisible(false);
-		lblStaticLastname.setBounds(47, 370, 205, 15);
 		getContentPane().add(lblStaticLastname);
-		
-		lblStaticPhone = new JLabel("Teléfono: ");
-		lblStaticPhone.setVisible(false);
-		lblStaticPhone.setBounds(47, 397, 205, 15);
 		getContentPane().add(lblStaticPhone);
-		
-		lblStaticBornDate = new JLabel("Fecha de nacimiento: ");
-		lblStaticBornDate.setVisible(false);
-		lblStaticBornDate.setBounds(47, 424, 205, 15);
 		getContentPane().add(lblStaticBornDate);
-		
-		lblOutName = new JLabel("");
-		lblOutName.setVisible(false);
-		lblOutName.setBounds(264, 343, 205, 15);
 		getContentPane().add(lblOutName);
-		
-		lblOutLastname = new JLabel("");
-		lblOutLastname.setVisible(false);
-		lblOutLastname.setBounds(264, 370, 205, 15);
 		getContentPane().add(lblOutLastname);
-		
-		lblOutPhone = new JLabel("");
-		lblOutPhone.setVisible(false);
-		lblOutPhone.setBounds(264, 397, 205, 15);
 		getContentPane().add(lblOutPhone);
-		
-		lblOutBornDate = new JLabel("");
-		lblOutBornDate.setVisible(false);
-		lblOutBornDate.setBounds(264, 424, 205, 15);
 		getContentPane().add(lblOutBornDate);
+		
 		setVisible(true);
 	}
 	
@@ -140,8 +77,8 @@ public class Contacts extends WindowBack implements IForm {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ContactController.setError(false);
-				ContactController.validate(txtName, "[a-zA-Z]+");
-				ContactController.validate(txtLastName, "[a-zA-Z]+");
+				ContactController.validate(txtName, "^([a-zA-Z]+\\s)*[a-zA-Z]+$");
+				ContactController.validate(txtLastName, "^([a-zA-Z]+\\s)*[a-zA-Z]+$");
 				ContactController.validate(txtPhone, "[0-9]+");
 				ContactController.validate(txtBornDate, "((19|20)[0-9]{2})/((0?[1-9])|1[012])/((0?[1-9])|(1[0-9])|(3[01]))");
 				
