@@ -12,9 +12,10 @@ import Ejercicio2.App.Elements.Image;
 import Ejercicio2.App.Elements.Label;
 import Ejercicio2.App.Elements.TextField;
 import Ejercicio2.App.Elements.WindowBack;
+import Ejercicio2.App.Interfaces.IForm;
 
 @SuppressWarnings("serial")
-public class MultipleSelection extends WindowBack {
+public class MultipleSelection extends WindowBack implements IForm {
 	private TextField textField;
 
 	public MultipleSelection() {
@@ -59,10 +60,17 @@ public class MultipleSelection extends WindowBack {
 		this.setVisible(true);
 	}
 
+	@Override
 	public ActionListener submit() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		};
+	}
+
+	@Override
+	public ActionListener clean() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

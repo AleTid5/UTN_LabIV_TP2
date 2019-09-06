@@ -72,7 +72,8 @@ public class Contacts extends WindowBack implements IForm {
 		
 		this.setVisible(true);
 	}
-	
+
+	@Override
 	public ActionListener submit() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -90,7 +91,8 @@ public class Contacts extends WindowBack implements IForm {
 			}
 		};
 	}
-	
+
+	@Override
 	public ActionListener clean() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

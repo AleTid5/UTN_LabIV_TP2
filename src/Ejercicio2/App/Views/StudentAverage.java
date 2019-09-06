@@ -69,7 +69,8 @@ public class StudentAverage extends WindowBack implements IForm {
 
 		this.setVisible(true);
 	}
-	
+
+	@Override
 	public ActionListener submit() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -85,19 +86,12 @@ public class StudentAverage extends WindowBack implements IForm {
 			}
 		};
 	}
-	
+
+	@Override
 	public ActionListener clean() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StudentAverageController.clean(lblSStudents, lblSAverage, lblSCondition, lblOAverage, lblOCondition, txtNote1, txtNote2, txtNote3);
-			}
-		};
-	}
-	
-	public ActionListener exit() {
-		return new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
 			}
 		};
 	}

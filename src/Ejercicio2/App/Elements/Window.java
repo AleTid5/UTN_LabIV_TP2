@@ -85,6 +85,14 @@ public class Window extends JFrame implements INavBar {
 		};	
 	}
 	
+	public ActionListener exit() {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		};
+	}
+	
 	/**
 	 * Establece el titulo en cada pantalla.
 	 * Es protected para que cada clase derivada la vea como private.
