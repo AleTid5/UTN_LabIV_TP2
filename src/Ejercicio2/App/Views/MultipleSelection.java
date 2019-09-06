@@ -1,17 +1,12 @@
 package Ejercicio2.App.Views;
 
-import java.awt.Rectangle;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JLabel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 
-import Ejercicio2.App.Controllers.ContactController;
 import Ejercicio2.App.Elements.Button;
 import Ejercicio2.App.Elements.Image;
 import Ejercicio2.App.Elements.Label;
@@ -61,7 +56,7 @@ public class MultipleSelection extends WindowBack {
 		getContentPane().add(textField);
 		getContentPane().add(button);
 
-		setVisible(true);
+		this.setVisible(true);
 	}
 
 	public ActionListener submit() {

@@ -70,7 +70,7 @@ public class Contacts extends WindowBack implements IForm {
 		getContentPane().add(lblOutPhone);
 		getContentPane().add(lblOutBornDate);
 		
-		setVisible(true);
+		this.setVisible(true);
 	}
 	
 	public ActionListener submit() {

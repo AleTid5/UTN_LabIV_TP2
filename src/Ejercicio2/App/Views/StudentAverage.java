@@ -30,23 +30,23 @@ public class StudentAverage extends WindowBack implements IForm {
 	public StudentAverage() {
 		this.setHeader("Promedio");
 		
-		Label labelN1 = new Label(47, 159, 66, 15, "Nota 1");		
+		Label labelN1 = new Label(47, 159, 66, 15, "Nota 1");
 		Label labelN2 = new Label(47, 186, 66, 15, "Nota 2");
-		Label labelN3 = new Label(47, 213, 66, 15, "Nota 3");		
-		Label lblEstadoTpS = new Label(47, 240, 90, 15, "Estado TP' s");		
-		txtNote1 = new TextField(156, 157, 124, 19);		
-		txtNote2 = new TextField(156, 184, 124, 19);		
-		txtNote3 = new TextField(156, 211, 124, 19);		
+		Label labelN3 = new Label(47, 213, 66, 15, "Nota 3");
+		Label lblEstadoTpS = new Label(47, 240, 90, 15, "Estado TP' s");
+		txtNote1 = new TextField(156, 157, 124, 19);
+		txtNote2 = new TextField(156, 184, 124, 19);
+		txtNote3 = new TextField(156, 211, 124, 19);
 		comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Aprobado", "Desaprobado"}));
-		comboBox.setBounds(156, 240, 125, 24);		
-		lblSStudents = new Label(401, 159, 124, 15, "Notas del Alumno", false);		
-		lblSAverage = new Label(349, 186, 73, 15, "Promedio", false);		
-		lblSCondition = new Label(349, 213, 73, 15, "Condición", false);		
-		lblOAverage = new Label(452, 186, 131, 15, "");		
-		lblOCondition = new Label(452, 213, 131, 15, "");		
-		Button btnCheck = new Button(260, 287, 24, 24, "Validar Formulario", new Image("check.png", 310, 537, 50, 50), this.submit());		
-		Button btnClean = new Button(154, 287, 24, 24, "Nuevo Estudiante", new Image("student.png", 310, 537, 50, 50), this.clean());		
+		comboBox.setBounds(156, 240, 125, 24);
+		lblSStudents = new Label(401, 159, 124, 15, "Notas del Alumno", false);
+		lblSAverage = new Label(349, 186, 73, 15, "Promedio", false);
+		lblSCondition = new Label(349, 213, 73, 15, "Condición", false);
+		lblOAverage = new Label(452, 186, 131, 15, "");
+		lblOCondition = new Label(452, 213, 131, 15, "");
+		Button btnCheck = new Button(260, 287, 24, 24, "Validar Formulario", new Image("check.png", 310, 537, 50, 50), this.submit());
+		Button btnClean = new Button(154, 287, 24, 24, "Nuevo Estudiante", new Image("student.png", 310, 537, 50, 50), this.clean());
 		Button btnExit = new Button(47, 287, 24, 24, "Salir del sistema", new Image("close.png", 310, 537, 50, 50), this.exit());
 		
 
@@ -66,6 +66,8 @@ public class StudentAverage extends WindowBack implements IForm {
 		getContentPane().add(btnCheck);
 		getContentPane().add(btnClean);
 		getContentPane().add(btnExit);
+
+		this.setVisible(true);
 	}
 	
 	public ActionListener submit() {
