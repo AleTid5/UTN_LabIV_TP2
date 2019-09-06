@@ -6,9 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class ContactController extends Controller {	
-	private static Boolean error = false;
-	
-	public static void validate(JTextField value, String regex) {
+	public static final void validate(JTextField value, String regex) {
 		try {
 			value.setBackground(Color.WHITE);
 			assertOrFail(value.getText().trim().matches(regex), new Exception());
@@ -17,8 +15,8 @@ public class ContactController extends Controller {
 			value.setBackground(Color.RED);
 		}
 	}
-	
-	public static void clean(JTextField name, JTextField lastname, JTextField phone, JTextField bornDate,
+
+	public static final void clean(JTextField name, JTextField lastname, JTextField phone, JTextField bornDate,
 			JLabel sTitle, JLabel sName, JLabel sLastname, JLabel sPhone, JLabel sBD, JLabel oName,
 			JLabel oLastname, JLabel oPhone, JLabel oBD) {
 		name.setText("");
@@ -43,8 +41,8 @@ public class ContactController extends Controller {
 		oBD.setVisible(false);
 		oBD.setText(name.getText().trim());
 	}
-	
-	public static void fillOutput(JTextField name, JTextField lastname, JTextField phone, JTextField bornDate,
+
+	public static final void fillOutput(JTextField name, JTextField lastname, JTextField phone, JTextField bornDate,
 			JLabel sTitle, JLabel sName, JLabel sLastname, JLabel sPhone, JLabel sBD, JLabel oName,
 			JLabel oLastname, JLabel oPhone, JLabel oBD) {
 		sTitle.setVisible(true);
@@ -60,13 +58,5 @@ public class ContactController extends Controller {
 		oPhone.setText(phone.getText().trim());
 		oBD.setVisible(true);
 		oBD.setText(bornDate.getText().trim());
-	}
-
-	public static Boolean hasError() {
-		return error;
-	}
-
-	public static void setError(Boolean error) {
-		ContactController.error = error;
 	}
 }

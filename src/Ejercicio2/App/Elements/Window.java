@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -20,7 +19,7 @@ import Ejercicio2.App.Views.MultipleSelection;
 import Ejercicio2.App.Views.StudentAverage;
 
 @SuppressWarnings("serial")
-public class Window extends JFrame implements INavBar {	
+public class Window extends JFrame implements INavBar {
 	public Window() {
 		getContentPane().setFont(new Font("Khmer OS System", Font.PLAIN, 11));
 		getContentPane().setBackground(SystemColor.controlShadow);
@@ -50,9 +49,7 @@ public class Window extends JFrame implements INavBar {
 		mnNewMenu.add(mntmEjercicio_2);
 
 		getContentPane().setLayout(null);
-		
-		JLabel image = new Image("utn.png", 478, 12, 160, 50);
-		getContentPane().add(image);
+		getContentPane().add(new Image("utn.png", 478, 12, 160, 50));
 	}
 
 	@Override

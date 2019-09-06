@@ -1,7 +1,17 @@
 package Ejercicio2.App.Controllers;
 
 public class Controller {
-	protected static void assertOrFail(Boolean comparison, Exception ex) throws Exception {
+	private static Boolean error = false;
+
+	protected static final void assertOrFail(Boolean comparison, Exception ex) throws Exception {
 		if (! comparison) throw ex;
+	}
+	
+	public static final Boolean hasError() {
+		return error;
+	}
+
+	public static final void setError(Boolean error) {
+		Controller.error = error;
 	}
 }

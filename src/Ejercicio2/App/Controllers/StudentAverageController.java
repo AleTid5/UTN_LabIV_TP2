@@ -11,12 +11,11 @@ import Ejercicio2.App.Exceptions.RegularStudent;
 import Ejercicio2.App.Models.Student;
 
 public class StudentAverageController extends Controller {
-	private static Boolean error = false;
 	private static double average = 0.00;
 	private static String condition = null;
 	
 	@SuppressWarnings("finally")
-	public static int getNote(JTextField value) {
+	public static final int getNote(JTextField value) {
 		int note = 0;
 		
 		try {
@@ -32,12 +31,12 @@ public class StudentAverageController extends Controller {
 		}
 	}
 	
-	public static void setAverage(int a, int b, int c) {
+	public static final void setAverage(int a, int b, int c) {
 		Student.setNotes(Arrays.asList(a, b, c));
 		average = Student.getAverage();
 	}
 	
-	public static void setCondition(Object tpCondition) {		
+	public static final void setCondition(Object tpCondition) {		
 		try {
 			boolean isTPApproved = tpCondition == "Aprobado";
 			assertOrFail(! (isTPApproved && Student.canBePromoted()), new PromotedStudent()); // Se niega para que no continue y salga por el catch
@@ -53,7 +52,7 @@ public class StudentAverageController extends Controller {
 
 	}
 	
-	public static void fillOutput(JLabel tit, JLabel sAvg, JLabel sCon, JLabel oAvg, JLabel oCon) {
+	public static final void fillOutput(JLabel tit, JLabel sAvg, JLabel sCon, JLabel oAvg, JLabel oCon) {
 		tit.setVisible(true);
 		sAvg.setVisible(true);
 		sCon.setVisible(true);
@@ -63,7 +62,7 @@ public class StudentAverageController extends Controller {
 		oCon.setText(condition);
 	}
 	
-	public static void clean(JLabel tit, JLabel sAvg, JLabel sCon, JLabel oAvg, JLabel oCon, JTextField v1, JTextField v2, JTextField v3) {
+	public static final void clean(JLabel tit, JLabel sAvg, JLabel sCon, JLabel oAvg, JLabel oCon, JTextField v1, JTextField v2, JTextField v3) {
 		v1.setBackground(Color.WHITE);
 		v2.setBackground(Color.WHITE);
 		v3.setBackground(Color.WHITE);
@@ -75,13 +74,5 @@ public class StudentAverageController extends Controller {
 		sCon.setVisible(false);
 		oAvg.setVisible(false);
 		oCon.setVisible(false);
-	}
-
-	public static Boolean hasError() {
-		return error;
-	}
-
-	public static void setError(Boolean error) {
-		StudentAverageController.error = error;
 	}
 }

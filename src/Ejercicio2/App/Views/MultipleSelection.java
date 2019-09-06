@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 
+import Ejercicio2.App.Controllers.MultipleSelectionController;
 import Ejercicio2.App.Elements.Button;
 import Ejercicio2.App.Elements.Image;
 import Ejercicio2.App.Elements.Label;
@@ -43,7 +44,8 @@ public class MultipleSelection extends WindowBack implements IForm {
 		chckbxDiseoGrfico.setBounds(340, 310, 149, 23);		
 		Label lblCantidadDeHoras = new Label(46, 358, 259, 15, "Cantidad de horas en el computador");		
 		textField = new TextField(343, 356, 129, 19);		
-		Button button = new Button(445, 405, 24, 24, "Validar Formulario", new Image("check.png", 310, 537, 50, 50), this.submit());
+		Button buttonChk = new Button(445, 405, 24, 24, "Validar Formulario", new Image("check.png", 310, 537, 50, 50), this.submit());
+		Button buttonCln = new Button(340, 405, 24, 24, "Limpiar Formulario", new Image("trash.png", 310, 537, 50, 50), this.clean());
 
 		getContentPane().add(lblElijaUnSistema);
 		getContentPane().add(rdbtnWindows);
@@ -55,7 +57,8 @@ public class MultipleSelection extends WindowBack implements IForm {
 		getContentPane().add(chckbxDiseoGrfico);
 		getContentPane().add(lblCantidadDeHoras);
 		getContentPane().add(textField);
-		getContentPane().add(button);
+		getContentPane().add(buttonChk);
+		getContentPane().add(buttonCln);
 
 		this.setVisible(true);
 	}
@@ -64,13 +67,20 @@ public class MultipleSelection extends WindowBack implements IForm {
 	public ActionListener submit() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MultipleSelectionController.validate();
+				
+				if (! MultipleSelectionController.hasError()) {
+					// Mostrar mensaje
+				}
 			}
 		};
 	}
 
 	@Override
 	public ActionListener clean() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		};
 	}
 }
