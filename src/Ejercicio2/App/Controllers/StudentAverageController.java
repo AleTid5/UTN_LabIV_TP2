@@ -39,8 +39,8 @@ public class StudentAverageController extends Controller {
 	public static final void setCondition(Object tpCondition) {		
 		try {
 			boolean isTPApproved = tpCondition == "Aprobado";
-			assertOrFail(! (isTPApproved && Student.canBePromoted()), new PromotedStudent()); // Se niega para que no continue y salga por el catch
-			assertOrFail(! (isTPApproved && Student.canBeRegularized()), new RegularStudent());
+			assertOrFail(isTPApproved && Student.canBePromoted(), false, new PromotedStudent()); // ESpero un false para continuar
+			assertOrFail(isTPApproved && Student.canBeRegularized(), false, new RegularStudent());
 			assertOrFail(false, new Exception());
 		} catch (PromotedStudent e) {
 			condition = "PROMOCIONADO";

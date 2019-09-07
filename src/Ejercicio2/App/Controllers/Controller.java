@@ -6,6 +6,11 @@ public class Controller {
 	protected static final void assertOrFail(Boolean comparison, Exception ex) throws Exception {
 		if (! comparison) throw ex;
 	}
+
+
+	protected static final void assertOrFail(Boolean comparison, Boolean expected, Exception ex) throws Exception {
+		if (comparison != expected) throw ex;
+	}
 	
 	public static final Boolean hasError() {
 		return error;

@@ -1,9 +1,11 @@
 package Ejercicio2.App.Views;
 
+import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 
@@ -17,33 +19,39 @@ import Ejercicio2.App.Interfaces.IForm;
 
 @SuppressWarnings("serial")
 public class MultipleSelection extends WindowBack implements IForm {
-	private TextField textField;
+	private	JRadioButton rdbtnLinux = new JRadioButton("Linux");
+	private JRadioButton rdbtnMac = new JRadioButton("Mac");
+	private JRadioButton rdbtnWindows = new JRadioButton("Windows");
+	private JCheckBox chckbxAdministracin = new JCheckBox("Administración");
+	private JCheckBox chckbxDiseoGrfico = new JCheckBox("Diseño Gráfico");
+	private JCheckBox chckbxProgramacion = new JCheckBox("Programación");
+	private TextField txtHours;
+	private Label lblElijaUnaEspecialidad;
 
 	public MultipleSelection() {
 		this.setHeader("Selección Multiple");
 
 		Label lblElijaUnSistema = new Label(46, 168, 259, 15, "Elija un Sistema Operativo");		
-		JRadioButton rdbtnWindows = new JRadioButton("Windows");
+		rdbtnWindows.setSelected(true);
 		rdbtnWindows.setBackground(SystemColor.controlShadow);
 		rdbtnWindows.setBounds(340, 162, 149, 23);		
-		JRadioButton rdbtnMac = new JRadioButton("Mac");
 		rdbtnMac.setBackground(SystemColor.controlShadow);
-		rdbtnMac.setBounds(340, 189, 149, 23);		
-		JRadioButton rdbtnLinux = new JRadioButton("Linux");
+		rdbtnMac.setBounds(340, 189, 149, 23);
 		rdbtnLinux.setBackground(SystemColor.controlShadow);
-		rdbtnLinux.setBounds(340, 216, 149, 23);		
-		Label lblElijaUnaEspecialidad = new Label(46, 259, 259, 15, "Elija al menos una especialidad");		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Programación");
-		chckbxNewCheckBox.setBackground(SystemColor.controlShadow);
-		chckbxNewCheckBox.setBounds(340, 256, 129, 23);		
-		JCheckBox chckbxAdministracin = new JCheckBox("Administración");
+		rdbtnLinux.setBounds(340, 216, 149, 23);
+		ButtonGroup group = new ButtonGroup();
+		group.add(rdbtnWindows);
+		group.add(rdbtnMac);
+		group.add(rdbtnLinux);
+		lblElijaUnaEspecialidad = new Label(46, 259, 259, 15, "Elija al menos una especialidad");		
+		chckbxProgramacion.setBackground(SystemColor.controlShadow);
+		chckbxProgramacion.setBounds(340, 256, 129, 23);
 		chckbxAdministracin.setBackground(SystemColor.controlShadow);
 		chckbxAdministracin.setBounds(340, 283, 149, 23);		
-		JCheckBox chckbxDiseoGrfico = new JCheckBox("Diseño Gráfico");
 		chckbxDiseoGrfico.setBackground(SystemColor.controlShadow);
 		chckbxDiseoGrfico.setBounds(340, 310, 149, 23);		
 		Label lblCantidadDeHoras = new Label(46, 358, 259, 15, "Cantidad de horas en el computador");		
-		textField = new TextField(343, 356, 129, 19);		
+		txtHours = new TextField(343, 356, 129, 19);		
 		Button buttonChk = new Button(445, 405, 24, 24, "Validar Formulario", new Image("check.png", 310, 537, 50, 50), this.submit());
 		Button buttonCln = new Button(340, 405, 24, 24, "Limpiar Formulario", new Image("trash.png", 310, 537, 50, 50), this.clean());
 
@@ -52,11 +60,11 @@ public class MultipleSelection extends WindowBack implements IForm {
 		getContentPane().add(rdbtnMac);
 		getContentPane().add(rdbtnLinux);
 		getContentPane().add(lblElijaUnaEspecialidad);
-		getContentPane().add(chckbxNewCheckBox);
+		getContentPane().add(chckbxProgramacion);
 		getContentPane().add(chckbxAdministracin);
 		getContentPane().add(chckbxDiseoGrfico);
 		getContentPane().add(lblCantidadDeHoras);
-		getContentPane().add(textField);
+		getContentPane().add(txtHours);
 		getContentPane().add(buttonChk);
 		getContentPane().add(buttonCln);
 
@@ -67,10 +75,21 @@ public class MultipleSelection extends WindowBack implements IForm {
 	public ActionListener submit() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MultipleSelectionController.validate();
-				
+				MultipleSelectionController.setError(false);
+				MultipleSelectionController.validate(chckbxProgramacion, chckbxAdministracin, chckbxDiseoGrfico, lblElijaUnaEspecialidad);
+				String hours = MultipleSelectionController.validate(txtHours, "[0-9]+");
+
 				if (! MultipleSelectionController.hasError()) {
-					// Mostrar mensaje
+					MultipleSelectionController.fillOutput(
+							MultipleSelectionController.getSO(
+									rdbtnLinux.isSelected(),
+									rdbtnMac.isSelected(),
+									rdbtnWindows.isSelected()),
+							MultipleSelectionController.getSpecialties(
+									chckbxProgramacion.isSelected(),
+									chckbxAdministracin.isSelected(),
+									chckbxDiseoGrfico.isSelected()),
+							hours + " Horas");
 				}
 			}
 		};
@@ -80,6 +99,13 @@ public class MultipleSelection extends WindowBack implements IForm {
 	public ActionListener clean() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				rdbtnWindows.setSelected(true);
+				lblElijaUnaEspecialidad.setForeground(Color.getColor("DARK_GREY"));
+				chckbxAdministracin.setSelected(false);
+				chckbxDiseoGrfico.setSelected(false);
+				chckbxProgramacion.setSelected(false);
+				txtHours.setBackground(Color.white);
+				txtHours.setText("");
 			}
 		};
 	}
