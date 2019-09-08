@@ -33,22 +33,22 @@ public class MultipleSelection extends WindowBack implements IForm {
 
 		Label lblElijaUnSistema = new Label(46, 168, 259, 15, "Elija un Sistema Operativo");		
 		rdbtnWindows.setSelected(true);
-		rdbtnWindows.setBackground(SystemColor.controlShadow);
+		rdbtnWindows.setBackground(new Color(225, 193, 119));
 		rdbtnWindows.setBounds(340, 162, 149, 23);		
-		rdbtnMac.setBackground(SystemColor.controlShadow);
+		rdbtnMac.setBackground(new Color(225, 193, 119));
 		rdbtnMac.setBounds(340, 189, 149, 23);
-		rdbtnLinux.setBackground(SystemColor.controlShadow);
+		rdbtnLinux.setBackground(new Color(225, 193, 119));
 		rdbtnLinux.setBounds(340, 216, 149, 23);
 		ButtonGroup group = new ButtonGroup();
 		group.add(rdbtnWindows);
 		group.add(rdbtnMac);
 		group.add(rdbtnLinux);
 		lblElijaUnaEspecialidad = new Label(46, 259, 259, 15, "Elija al menos una especialidad");		
-		chckbxProgramacion.setBackground(SystemColor.controlShadow);
+		chckbxProgramacion.setBackground(new Color(225, 193, 119));
 		chckbxProgramacion.setBounds(340, 256, 129, 23);
-		chckbxAdministracin.setBackground(SystemColor.controlShadow);
+		chckbxAdministracin.setBackground(new Color(225, 193, 119));
 		chckbxAdministracin.setBounds(340, 283, 149, 23);		
-		chckbxDiseoGrfico.setBackground(SystemColor.controlShadow);
+		chckbxDiseoGrfico.setBackground(new Color(225, 193, 119));
 		chckbxDiseoGrfico.setBounds(340, 310, 149, 23);		
 		Label lblCantidadDeHoras = new Label(46, 358, 259, 15, "Cantidad de horas en el computador");		
 		txtHours = new TextField(343, 356, 129, 19);		
@@ -89,7 +89,7 @@ public class MultipleSelection extends WindowBack implements IForm {
 									chckbxProgramacion.isSelected(),
 									chckbxAdministracin.isSelected(),
 									chckbxDiseoGrfico.isSelected()),
-							hours + " Horas");
+							MultipleSelectionController.HOURS_IN + hours + " HS");
 				}
 			}
 		};

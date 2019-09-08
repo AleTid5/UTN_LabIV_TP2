@@ -12,6 +12,7 @@ public class Home extends Window {
 		this.setHeader("Inicio");
 		
 		JLabel lbl1 = new Label(119, 134, 415, 36, "TRABAJO PRÁCTICO N° 2");
+		lbl1.setLocation(117, 75);
 		lbl1.setFont(new Font("Dialog", Font.BOLD, 30));
 		
 		JLabel lbl2 = new Label(12, 572, 101, 15, "Alejandro M. Tidele");
@@ -23,7 +24,9 @@ public class Home extends Window {
 		getContentPane().add(lbl1);
 		getContentPane().add(lbl2);
 		getContentPane().add(lbl3);
-		getContentPane().add(new Image("space.gif", 12, 216, 626, 321));
+		Image image = new Image("main.gif", 12, 216, 626, 321);
+		image.setBounds(127, 108, 430, 479);
+		getContentPane().add(image);
 		
 		this.setVisible(true);
 	}

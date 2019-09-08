@@ -3,7 +3,6 @@ package Ejercicio2.App.Elements;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +21,7 @@ import Ejercicio2.App.Views.StudentAverage;
 public class Window extends JFrame implements INavBar {
 	public Window() {
 		getContentPane().setFont(new Font("Khmer OS System", Font.PLAIN, 11));
-		getContentPane().setBackground(SystemColor.controlShadow);
+		getContentPane().setBackground(new Color(225, 193, 119));
 		setTitle("TP2 | ");
 		setBackground(Color.DARK_GRAY);
 		setSize(650, 650);

@@ -7,8 +7,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import Ejercicio2.App.Elements.Alert;
+import Ejercicio2.App.Interfaces.IMultipleSelectionController;
 
-public class MultipleSelectionController extends Controller {
+public class MultipleSelectionController extends Controller implements IMultipleSelectionController {
 	public static final void validate(JCheckBox v1, JCheckBox v2, JCheckBox v3, JLabel l) {
 		try {
 			l.setForeground(Color.getColor("DARK_GREY"));			
@@ -34,20 +35,20 @@ public class MultipleSelectionController extends Controller {
 	}
 	
 	public static final String getSO(Boolean isL, Boolean isM, Boolean isW) {
-		return isL ? "Linux" : isM ? "Mac" : "Windows";
+		return MultipleSelectionController.LIKED_SO + (isL ? "Linux" : isM ? "Mac" : "Windows");
 	}
 	
 	public static final String getSpecialties(Boolean isP, Boolean isA, Boolean isD) {
-		String returned = "";
+		String returned = MultipleSelectionController.LIKED_SP;
 		
-		if (isP) returned += "Programación - ";
-		if (isA) returned += "Administración - ";
-		if (isD) returned += "Diseño Gráfico - ";
+		if (isA) returned += "Administración y ";
+		if (isD) returned += "Diseño Gráfico y ";		
+		if (isP) returned += "Programación y ";
 		
 		return returned.substring(0, returned.length() - 3);
 	}
 	
 	public static final void fillOutput(String so, String specialties, String hours) {
-		new Alert("Selecciones", so + " | " + specialties + " | " + hours);
+		new Alert("Selecciones", so + ", " + specialties + " y " + hours);
 	}
 }

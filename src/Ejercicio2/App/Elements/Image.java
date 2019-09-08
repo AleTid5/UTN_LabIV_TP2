@@ -1,6 +1,6 @@
 package Ejercicio2.App.Elements;
 
-import java.awt.SystemColor;
+import java.awt.Color;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -14,6 +14,6 @@ public class Image extends JLabel {
 		this.setIcon(new ImageIcon(Image.class.getResource(Image.baseDir + resource)));
 		this.setHorizontalAlignment(SwingConstants.CENTER);
 		this.setBounds(x, y, w, h);
-		this.setBackground(SystemColor.controlShadow);
+		this.setBackground(new Color(225, 193, 119));
 	}
 }
