@@ -1,7 +1,6 @@
 package Ejercicio2.App.Views;
 
 import java.awt.Color;
-import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
